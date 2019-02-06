@@ -9,7 +9,7 @@ class ListenThread(Thread):
         self.start()
 
     def run(self):
-        print('Now listening!')
+        print('You are connected!\n')
         while True:
             print(self.sock.recv(4096).decode())
 
@@ -22,7 +22,7 @@ while True:
     try:
         socket = socket(AF_INET, SOCK_STREAM)
         socket.connect((srv_address, srv_port))
-        print('Connected to {} on port {}'.format(srv_address, srv_port))
+    #    print('Connected to {} on port {}'.format(srv_address, srv_port))
         socket.send(username.encode())
         listener = ListenThread(socket)
         break
